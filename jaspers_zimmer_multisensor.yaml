@@ -1,0 +1,43 @@
+esphomeyaml:
+  name: jaspers_zimmer_multisensor
+  platform: ESP8266
+  board: d1_mini
+
+wifi:
+  ssid: !secret wlan_ssid
+  password: !secret wlan_password
+  manual_ip:
+    static_ip: 192.168.1.35
+    subnet: 255.255.255.0
+    gateway: 192.168.1.2
+    dns1: 192.168.1.2
+    dns2: 192.168.2.1
+
+mqtt:
+  broker: '192.168.1.241'
+  username: !secret jasper_zimmer_multisensor_mqtt_user
+  password: !secret jasper_zimmer_multisensor_mqtt_password
+
+# Enable logging
+logger:
+  level: info
+
+ota:
+  password: !secret jasper_zimmer_multisensor_ota_password
+
+binary_sensor:
+  - platform: gpio
+    pin: D5
+    name: 'pir'
+
+sensor:
+  - platform: dht
+    pin: D4
+    model: DHT11
+    temperature:
+      filters:
+      name: 'temperature'
+    humidity:
+      filters:
+      name: 'humidity'
+    update_interval: 10s
