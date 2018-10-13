@@ -1,5 +1,5 @@
 esphomeyaml:
-  name: jaspers_zimmer_multisensor
+  name: jasper_zimmer_multisensor
   platform: ESP8266
   board: d1_mini
 
@@ -28,7 +28,7 @@ ota:
 binary_sensor:
   - platform: gpio
     pin: D5
-    name: 'pir'
+    name: 'jasper_zimmer_multisensor_pir'
 
 sensor:
   - platform: dht
@@ -36,8 +36,8 @@ sensor:
     model: DHT11
     temperature:
       filters:
-      name: 'temperature'
+      name: 'jasper_zimmer_multisensor_temperature'
     humidity:
       filters:
-      name: 'humidity'
+      name: 'jasper_zimmer_multisensor_humidity'
     update_interval: 10s
