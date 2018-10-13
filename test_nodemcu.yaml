@@ -24,3 +24,10 @@ logger:
 
 ota:
   password: !secret test_nodemcu_ota_password
+
+binary_sensor:
+  - platform: gpio
+    pin:
+      number: D5
+      mode: INPUT_PULLUP
+    name: 'test_nodemcu_switch1'
