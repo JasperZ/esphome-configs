@@ -36,6 +36,7 @@ sensor:
     model: DHT11
     temperature:
       filters:
+        offset: -5.0
       name: 'jasper_zimmer_multisensor_temperature'
     humidity:
       filters:
