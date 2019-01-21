@@ -6,17 +6,10 @@ esphomeyaml:
 wifi:
   ssid: !secret wlan_ssid
   password: !secret wlan_password
-  manual_ip:
-    static_ip: 192.168.1.35
-    subnet: 255.255.255.0
-    gateway: 192.168.1.2
-    dns1: 192.168.1.2
-    dns2: 192.168.2.1
+  domain: .iot
 
-mqtt:
-  broker: '192.168.1.241'
-  username: !secret jasper_zimmer_multisensor_mqtt_user
-  password: !secret jasper_zimmer_multisensor_mqtt_password
+api:
+  
 
 # Enable logging
 logger:

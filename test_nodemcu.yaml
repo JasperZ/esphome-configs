@@ -6,17 +6,9 @@ esphomeyaml:
 wifi:
   ssid: !secret wlan_ssid
   password: !secret wlan_password
-  manual_ip:
-    static_ip: 192.168.1.36
-    subnet: 255.255.255.0
-    gateway: 192.168.1.2
-    dns1: 192.168.1.2
-    dns2: 192.168.2.1
+  domain: .iot
 
-mqtt:
-  broker: '192.168.1.241'
-  username: !secret test_nodemcu_mqtt_user
-  password: !secret test_nodemcu_mqtt_password
+api:
 
 # Enable logging
 logger:
@@ -31,3 +23,21 @@ binary_sensor:
       number: D5
       mode: INPUT_PULLUP
     name: 'test_nodemcu_switch1'
+
+output:
+  - platform: esp8266_pwm
+    pin: D0
+    id: gpio_r
+  - platform: esp8266_pwm
+    pin: D1
+    id: gpio_g
+  - platform: esp8266_pwm
+    pin: D6
+    id: gpio_b
+
+light:
+  - platform: rgb
+    name: 'test_nodemcu_rgb1'
+    red: gpio_r
+    green: gpio_g
+    blue: gpio_b
