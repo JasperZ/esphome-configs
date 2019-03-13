@@ -1,0 +1,96 @@
+esphome:
+  name: outlet_1
+  platform: ESP8266
+  board: esp01_1m
+  board_flash_mode: dout
+
+wifi:
+  ssid: !secret wlan_ssid
+  password: !secret wlan_password
+  domain: .iot
+  manual_ip:
+    static_ip: 192.168.50.5
+    gateway: 192.168.50.1
+    subnet: 255.255.255.0
+
+# Enable logging
+logger:
+#  level: debug
+  level: info
+
+# Enable Home Assistant API
+api:
+  password: !secret outlet_1_api_password
+
+ota:
+  password: !secret outlet_1_ota_password
+
+sensor:
+  - platform: uptime
+    name: 'outlet_1_uptime'
+  
+  - platform: wifi_signal
+    name: 'outlet_1_wifi_signal'
+  
+  - platform: hlw8012
+    sel_pin:
+      number: GPIO12
+      inverted: True
+    cf_pin: GPIO04
+    cf1_pin: GPIO05
+    current_resistor: 0.00125
+    voltage_divider: 874
+    current:
+      name: "outlet_1_current"
+    voltage:
+      name: "outlet_1_voltage"
+    power:
+      name: "outlet_1_power"
+    update_interval: 10s
+
+binary_sensor:
+  - platform: gpio
+    id: button
+    pin:
+      number: GPIO03
+      mode: INPUT_PULLUP
+      inverted: True
+    on_press:
+      - switch.toggle: relay_template
+
+output:
+  - platform: esp8266_pwm
+    id: blue_led_pwm_output
+    pin:
+      number: GPIO01
+      inverted: True
+
+light:
+  - platform: monochromatic
+    id: blue_led
+    output: blue_led_pwm_output
+
+switch:
+  - platform: gpio
+    id: relay
+    pin: GPIO14
+  
+  - platform: template
+    id: relay_template
+    name: "outlet_1_relay"
+    turn_on_action:
+        - switch.turn_on:
+            id: relay
+        - light.turn_on:
+            id: blue_led
+    turn_off_action:
+        - switch.turn_off:
+            id: relay
+        - light.turn_off:
+            id: blue_led
+    optimistic: true
+
+status_led:
+  pin:
+    number: GPIO13
+    inverted: True
