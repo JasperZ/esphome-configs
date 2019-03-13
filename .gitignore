@@ -1,4 +1,5 @@
 *
 !.gitignore
 !*.yaml
+!*.md
 secrets.yaml
