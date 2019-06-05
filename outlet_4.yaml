@@ -1,0 +1,93 @@
+esphome:
+  name: outlet_4
+  platform: ESP8266
+  board: esp01_1m
+  board_flash_mode: dout
+
+wifi:
+  ssid: !secret wlan_ssid
+  password: !secret wlan_password
+  domain: .iot
+  manual_ip:
+    static_ip: 192.168.50.10
+    gateway: 192.168.50.1
+    subnet: 255.255.255.0
+
+# Enable logging
+logger:
+#  level: debug
+  level: info
+
+# Enable Home Assistant API
+api:
+  password: !secret outlet_4_api_password
+
+ota:
+  password: !secret outlet_4_ota_password
+
+sensor:
+  - platform: uptime
+    name: 'outlet_4_uptime'
+
+  - platform: wifi_signal
+    name: 'outlet_4_wifi_signal'
+
+  - platform: hlw8012
+    sel_pin:
+      number: GPIO12
+      inverted: True
+    cf_pin: GPIO05
+    cf1_pin: GPIO14
+    current_resistor: 0.00125
+    voltage_divider: 874
+    current:
+      name: "outlet_4_current"
+      filters:
+      - calibrate_linear:
+          - 0.0 -> 0.0
+          - 2.0 -> 1.84
+    voltage:
+      name: "outlet_4_voltage"
+      filters:
+      - calibrate_linear:
+          - 0.0 -> 0.0
+          - 216 -> 222.0
+    power:
+      name: "outlet_4_power"
+      filters:
+      - calibrate_linear:
+          - 0.0 -> 0.0
+          - 830.0 -> 404.0
+    update_interval: 10s
+
+binary_sensor:
+  - platform: gpio
+    id: button
+    pin:
+      number: GPIO13
+      mode: INPUT_PULLUP
+      inverted: True
+    on_press:
+      - switch.toggle: relay
+    internal: True
+
+switch:
+  - platform: gpio
+    id: relay
+    name: outlet_4_relay
+    pin: GPIO15
+    on_turn_on:
+    - switch.turn_on: blue_led
+    on_turn_off:
+    - switch.turn_off: blue_led
+
+  - platform: gpio
+    id: blue_led
+    pin:
+      number: GPIO02
+      inverted: True
+
+status_led:
+  pin:
+    number: GPIO00
+    inverted: True
