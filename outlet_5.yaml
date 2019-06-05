@@ -42,22 +42,22 @@ sensor:
     voltage_divider: 874
     current:
       name: "outlet_5_current"
-      # filters:
-      # - calibrate_linear:
-      #     - 0.0 -> 0.0
-      #     - 2.0 -> 1.84
+      filters:
+      - calibrate_linear:
+          - 0.0 -> 0.0
+          - 0.28 -> 0.17
     voltage:
       name: "outlet_5_voltage"
-      # filters:
-      # - calibrate_linear:
-      #     - 0.0 -> 0.0
-      #     - 222.0 -> 221.0
+      filters:
+      - calibrate_linear:
+          - 0.0 -> 0.0
+          - 215.9 -> 222.0
     power:
       name: "outlet_5_power"
-      # filters:
-      # - calibrate_linear:
-      #     - 0.0 -> 0.0
-      #     - 830.0 -> 404.0
+      filters:
+      - calibrate_linear:
+          - 0.0 -> 0.0
+          - 79.1 -> 38.0
     update_interval: 10s
 
 binary_sensor:
