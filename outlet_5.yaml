@@ -15,7 +15,7 @@ wifi:
 
 # Enable logging
 logger:
-#  level: debug
+  # level: debug
   level: info
 
 # Enable Home Assistant API
@@ -38,27 +38,29 @@ sensor:
       inverted: True
     cf_pin: GPIO05
     cf1_pin: GPIO14
-    current_resistor: 0.00125
-    voltage_divider: 874
+    change_mode_every: 3
+    update_interval: 3s
     current:
       name: "outlet_5_current"
       filters:
       - calibrate_linear:
-          - 0.0 -> 0.0
-          - 0.28 -> 0.17
+          - 0.38142 -> 0.17
+          - 2.55893 -> 1.86
+          - 2.56858 -> 1.87
     voltage:
       name: "outlet_5_voltage"
       filters:
       - calibrate_linear:
-          - 0.0 -> 0.0
-          - 215.9 -> 222.0
+          - 583.94159 -> 222.0
+          - 586.25714 -> 223.0
     power:
       name: "outlet_5_power"
       filters:
       - calibrate_linear:
-          - 0.0 -> 0.0
-          - 79.1 -> 38.0
-    update_interval: 10s
+          - 258.59030 -> 39.0
+          - 265.48602 -> 40.0
+          - 2813.46265 -> 414.0
+          - 2827.25391 -> 415.0
 
 binary_sensor:
   - platform: gpio
