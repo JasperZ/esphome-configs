@@ -13,14 +13,12 @@ wifi:
     gateway: 192.168.50.1
     subnet: 255.255.255.0
 
-# Enable logging
 logger:
-#  level: debug
   level: info
 
-# Enable Home Assistant API
 api:
   password: !secret outlet_3_api_password
+  reboot_timeout: 0s
 
 ota:
   password: !secret outlet_3_ota_password

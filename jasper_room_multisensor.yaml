@@ -14,9 +14,7 @@ wifi:
 
 api:
   password: !secret jasper_room_multisensor_api_password
-  
 
-# Enable logging
 logger:
   level: info
 
@@ -30,7 +28,7 @@ binary_sensor:
 
 sensor:
   - platform: dht
-    pin: D4
+    pin: D3
     model: DHT11
     temperature:
       filters:

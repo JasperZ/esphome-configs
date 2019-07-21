@@ -16,7 +16,6 @@ wifi:
 api:
   password: !secret jasper_room_lights_api_password
 
-# Enable logging
 logger:
   baud_rate: 0
   level: info
