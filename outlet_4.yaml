@@ -14,6 +14,10 @@ wifi:
     subnet: 255.255.255.0
 
 logger:
+<<<<<<< HEAD
+=======
+  # level: debug
+>>>>>>> e1c27a4cb32f3163ee43e7c9b1adcbf2ab169834
   level: info
 
 api:
@@ -36,27 +40,33 @@ sensor:
       inverted: True
     cf_pin: GPIO05
     cf1_pin: GPIO14
-    current_resistor: 0.00125
-    voltage_divider: 874
+    change_mode_every: 3
+    update_interval: 3s
     current:
       name: "outlet_4_current"
       filters:
       - calibrate_linear:
           - 0.0 -> 0.0
-          - 0.23 -> 0.17
+          - 0.28969 -> 0.17
+          - 0.30128 -> 0.18
+          - 2.56376 -> 1.86
     voltage:
       name: "outlet_4_voltage"
       filters:
       - calibrate_linear:
-          - 0.0 -> 0.0
-          - 216.1 -> 222.0
+          - 586.25714 -> 222.0
+          - 583.94159 -> 223.0
+          - 591.13354 -> 224.0
+          - 593.61261 -> 225.0
+
     power:
       name: "outlet_4_power"
       filters:
       - calibrate_linear:
-          - 0.0 -> 0.0
-          - 79.1 -> 38.0
-    update_interval: 10s
+          - 13.79148 -> 0.0
+          - 265.48602 -> 40.0
+          - 2837.59766 -> 415.0
+          - 2841.04517 -> 416.0
 
 binary_sensor:
   - platform: gpio
