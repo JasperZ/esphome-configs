@@ -18,7 +18,7 @@ logger:
 
 api:
   password: !secret outlet_1_api_password
-  reboot_timeout: 0s
+  # reboot_timeout: 0s
 
 ota:
   password: !secret outlet_1_ota_password
