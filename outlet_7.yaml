@@ -39,7 +39,7 @@ sensor:
     change_mode_every: 3
     update_interval: 3s
     current:
-      name: "outlet_6_current"
+      name: "outlet_7_current"
       filters:
       - calibrate_linear:
           - 0.01931 -> 0.000
@@ -47,14 +47,14 @@ sensor:
           - 2.19199 -> 1.83
           - 2.20164 -> 1.84
     voltage:
-      name: "outlet_6_voltage"
+      name: "outlet_7_voltage"
       filters:
       - calibrate_linear:
           - 0.0 -> 0.0
           - 699.72192 -> 222.0
           - 702.58240 -> 223.0
     power:
-      name: "outlet_6_power"
+      name: "outlet_7_power"
       filters:
       - calibrate_linear:
           - 0.0 -> 0.0
