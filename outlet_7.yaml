@@ -35,30 +35,32 @@ sensor:
       number: GPIO12
       inverted: True
     cf_pin: GPIO05
-    cf1_pin: GPIO14
+    cf1_pin: GPIO04
     change_mode_every: 3
     update_interval: 3s
     current:
-      name: "outlet_7_current"
-      # filters:
-      # - calibrate_linear:
-      #     - 0.38142 -> 0.17
-      #     - 2.55893 -> 1.86
-      #     - 2.56858 -> 1.87
+      name: "outlet_6_current"
+      filters:
+      - calibrate_linear:
+          - 0.01931 -> 0.000
+          - 0.21244 -> 0.17
+          - 2.19199 -> 1.83
+          - 2.20164 -> 1.84
     voltage:
-      name: "outlet_7_voltage"
-      # filters:
-      # - calibrate_linear:
-      #     - 583.94159 -> 222.0
-      #     - 586.25714 -> 223.0
+      name: "outlet_6_voltage"
+      filters:
+      - calibrate_linear:
+          - 0.0 -> 0.0
+          - 699.72192 -> 222.0
+          - 702.58240 -> 223.0
     power:
-      name: "outlet_7_power"
-      # filters:
-      # - calibrate_linear:
-      #     - 258.59030 -> 39.0
-      #     - 265.48602 -> 40.0
-      #     - 2813.46265 -> 414.0
-      #     - 2827.25391 -> 415.0
+      name: "outlet_6_power"
+      filters:
+      - calibrate_linear:
+          - 0.0 -> 0.0
+          - 286.17325 -> 38.0
+          - 2989.30371 -> 410.0
+          - 3006.54321 -> 411.0
 
 binary_sensor:
   - platform: gpio
