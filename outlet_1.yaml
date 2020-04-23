@@ -68,7 +68,7 @@ time:
         then:
           - if:
               condition:
-                lambda: 'return id(blue_led).state == 1;'
+                lambda: 'return id(relay).state == 1;'
               then:
                 - switch.turn_on: blue_led
       - seconds: 0
