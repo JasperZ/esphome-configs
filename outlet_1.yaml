@@ -58,6 +58,25 @@ sensor:
           - 724.0 -> 404.0
     update_interval: 10s
 
+time:
+  - platform: homeassistant
+    id: homeassistant_time
+    on_time:
+      - seconds: 0
+        minutes: 0
+        hours: 8
+        then:
+          - if:
+              condition:
+                lambda: 'return id(blue_led).state == 1;'
+              then:
+                - switch.turn_on: blue_led
+      - seconds: 0
+        minutes: 0
+        hours: 0
+        then:
+          - switch.turn_off: blue_led
+
 binary_sensor:
   - platform: gpio
     id: button
@@ -75,7 +94,12 @@ switch:
     name: outlet_1_relay
     pin: GPIO14
     on_turn_on:
-    - switch.turn_on: blue_led
+      then:
+        - if:
+            condition:
+              lambda: 'return id(homeassistant_time).now().hour >= 8 && id(homeassistant_time).now().hour < 24;'
+            then:
+              - switch.turn_on: blue_led
     on_turn_off:
     - switch.turn_off: blue_led
 
