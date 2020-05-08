@@ -16,19 +16,41 @@ api:
   password: !secret test_nodemcu_api_password
 
 logger:
-  level: info
+  level: debug
 
 ota:
   password: !secret test_nodemcu_ota_password
 
-binary_sensor:
-  - platform: gpio
-    pin: D5
-    name: 'test_nodemcu_pir'
-
 sensor:
-  - platform: uptime
-    name: 'test_nodemcu_uptime'
+- platform: ntc
+  name: test_nodemcu_temperature
+  sensor: resistance_sensor
+  calibration:
+    # b_constant: 3950
+    # reference_temperature: 25°C
+    # reference_resistance: 100kOhm
+    - 100.366kOhm -> 23.4°C
+    - 63.307kOhm -> 34.8°C
+    - 304.502kOhm -> -6.1°C
+- platform: resistance
+  id: resistance_sensor
+  sensor: source_sensor
+  configuration: DOWNSTREAM
+  resistor: 32.59kOhm
+  reference_voltage: 1.0V
+- platform: adc
+  id: source_sensor
+  pin: A0
+  update_interval: never
 
-  - platform: wifi_signal
-    name: 'test_nodemcu_wifi_signal'
+switch:
+- platform: gpio
+  pin: D1
+  id: ntc_vcc
+
+interval:
+- interval: 60s
+  then:
+  - switch.turn_on: ntc_vcc
+  - component.update: source_sensor
+  - switch.turn_off: ntc_vcc
