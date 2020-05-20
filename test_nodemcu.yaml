@@ -42,6 +42,8 @@ sensor:
   id: source_sensor
   pin: A0
   update_interval: never
+- platform: uptime
+  name: 'test_nodemcu_uptime'
 
 switch:
 - platform: gpio
