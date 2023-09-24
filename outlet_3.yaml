@@ -24,6 +24,12 @@ api:
 ota:
   password: !secret outlet_3_ota_password
 
+time:
+  - platform: sntp
+    id: sntp_time
+    servers: 
+      - 192.168.50.1
+
 sensor:
   - platform: uptime
     name: 'outlet_3_uptime'
@@ -56,12 +62,17 @@ sensor:
           - 614.50757 -> 225.0
     power:
       name: "outlet_3_power"
+      id: outlet_3_power
       filters:
       - calibrate_linear:
         - 0.00000 -> 0.0
         - 265.83084 -> 40.0
         - 2872.42114 -> 418.0
         - 2875.52417 -> 419.01
+
+  - platform: total_daily_energy
+    name: outlet_3_daily_energy
+    power_id: outlet_3_power
 
 binary_sensor:
   - platform: gpio
