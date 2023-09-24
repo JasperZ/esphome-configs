@@ -52,12 +52,18 @@ sensor:
             - 0.38142 -> 0.17
             - 2.55893 -> 1.86
             - 2.56858 -> 1.87
+        - lambda: |
+            if (x < 0) return 0; 
+            else return x;
     voltage:
       name: outlet_5_voltage
       filters:
         - calibrate_linear:
             - 583.94159 -> 222.0
             - 586.25714 -> 223.0
+        - lambda: |
+            if (x < 0) return 0; 
+            else return x;
     power:
       name: outlet_5_power
       id: outlet_5_power
@@ -67,6 +73,9 @@ sensor:
             - 265.48602 -> 40.0
             - 2813.46265 -> 414.0
             - 2827.25391 -> 415.0
+        - lambda: |
+            if (x < 0) return 0; 
+            else return x;
 
   - platform: total_daily_energy
     name: outlet_5_daily_energy

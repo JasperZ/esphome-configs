@@ -52,12 +52,20 @@ sensor:
         - calibrate_linear:
             - 0.0 -> 0.0
             - 1.8 -> 1.83
+        - lambda: |
+            if (x < 0) return 0; 
+            else return x;
+
     voltage:
       name: outlet_1_voltage
       filters:
         - calibrate_linear:
             - 0.0 -> 0.0
             - 221.0 -> 220.0
+        - lambda: |
+            if (x < 0) return 0; 
+            else return x;
+
     power:
       name: outlet_1_power
       id: outlet_1_power
@@ -65,6 +73,9 @@ sensor:
         - calibrate_linear:
             - 0.0 -> 0.0
             - 724.0 -> 404.0
+        - lambda: |
+            if (x < 0) return 0; 
+            else return x;
 
   - platform: total_daily_energy
     name: outlet_1_daily_energy

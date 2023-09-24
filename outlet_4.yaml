@@ -53,6 +53,9 @@ sensor:
             - 0.28969 -> 0.17
             - 0.30128 -> 0.18
             - 2.56376 -> 1.86
+        - lambda: |
+            if (x < 0) return 0; 
+            else return x;
     voltage:
       name: outlet_4_voltage
       filters:
@@ -61,6 +64,9 @@ sensor:
             - 583.94159 -> 223.0
             - 591.13354 -> 224.0
             - 593.61261 -> 225.0
+        - lambda: |
+            if (x < 0) return 0; 
+            else return x;
 
     power:
       name: outlet_4_power
@@ -71,6 +77,9 @@ sensor:
             - 265.48602 -> 40.0
             - 2837.59766 -> 415.0
             - 2841.04517 -> 416.0
+        - lambda: |
+            if (x < 0) return 0; 
+            else return x;
 
   - platform: total_daily_energy
     name: outlet_4_daily_energy
