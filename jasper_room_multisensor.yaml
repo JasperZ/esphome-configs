@@ -1,5 +1,5 @@
 esphome:
-  name: jasper_room_multisensor
+  name: jasper-room-multisensor
   platform: ESP8266
   board: d1_mini
 
@@ -13,7 +13,9 @@ wifi:
     subnet: 255.255.255.0
 
 api:
-  password: !secret jasper_room_multisensor_api_password
+  # reboot_timeout: 0s
+  encryption:
+    key: !secret jasper_room_multisensor_api_encryption_key
 
 logger:
   level: info

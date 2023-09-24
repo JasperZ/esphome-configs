@@ -17,8 +17,9 @@ logger:
   level: info
 
 api:
-  password: !secret outlet_4_api_password
   # reboot_timeout: 0s
+  encryption:
+    key: !secret outlet_4_api_encryption_key
 
 ota:
   password: !secret outlet_4_ota_password
@@ -78,7 +79,7 @@ binary_sensor:
 switch:
   - platform: gpio
     id: relay
-    name: outlet-4_relay
+    name: outlet_4_relay
     pin: GPIO15
     on_turn_on:
     - switch.turn_on: blue_led

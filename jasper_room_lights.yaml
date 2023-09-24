@@ -1,5 +1,5 @@
 esphome:
-  name: jasper_room_lights
+  name: jasper-room-lights
   platform: ESP8266
   board: esp01_1m
   board_flash_mode: dout
@@ -14,7 +14,9 @@ wifi:
     subnet: 255.255.255.0
 
 api:
-  password: !secret jasper_room_lights_api_password
+  # reboot_timeout: 0s
+  encryption:
+    key: !secret jasper_room_lights_api_encryption_key
 
 logger:
   baud_rate: 0
