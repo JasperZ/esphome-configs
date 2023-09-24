@@ -1,5 +1,5 @@
 esphome:
-  name: outlet_1
+  name: outlet-1
   platform: ESP8266
   board: esp01_1m
   board_flash_mode: dout
@@ -91,7 +91,7 @@ binary_sensor:
 switch:
   - platform: gpio
     id: relay
-    name: outlet_1_relay
+    name: outlet-1_relay
     pin: GPIO14
     on_turn_on:
       then:
