@@ -27,15 +27,15 @@ ota:
 time:
   - platform: sntp
     id: sntp_time
-    servers: 
+    servers:
       - 192.168.50.1
 
 sensor:
   - platform: uptime
-    name: 'outlet_3_uptime'
+    name: outlet_3_uptime
 
   - platform: wifi_signal
-    name: 'outlet_3_wifi_signal'
+    name: outlet_3_wifi_signal
 
   - platform: hlw8012
     sel_pin:
@@ -46,29 +46,29 @@ sensor:
     change_mode_every: 3
     update_interval: 3s
     current:
-      name: "outlet_3_current"
+      name: outlet_3_current
       filters:
-      - calibrate_linear:
-          - 0.11105 -> 0.0
-          - 0.36646 -> 0.17
-          - 0.34763 -> 0.18
-          - 2.58838 -> 1.86
-          - 2.61445 -> 1.87
+        - calibrate_linear:
+            - 0.11105 -> 0.0
+            - 0.36646 -> 0.17
+            - 0.34763 -> 0.18
+            - 2.58838 -> 1.86
+            - 2.61445 -> 1.87
     voltage:
-      name: "outlet_3_voltage"
+      name: outlet_3_voltage
       filters:
-      - calibrate_linear:
-          - 609.93079 -> 224.0
-          - 614.50757 -> 225.0
+        - calibrate_linear:
+            - 609.93079 -> 224.0
+            - 614.50757 -> 225.0
     power:
-      name: "outlet_3_power"
+      name: outlet_3_power
       id: outlet_3_power
       filters:
-      - calibrate_linear:
-        - 0.00000 -> 0.0
-        - 265.83084 -> 40.0
-        - 2872.42114 -> 418.0
-        - 2875.52417 -> 419.01
+        - calibrate_linear:
+            - 0.00000 -> 0.0
+            - 265.83084 -> 40.0
+            - 2872.42114 -> 418.0
+            - 2875.52417 -> 419.01
 
   - platform: total_daily_energy
     name: outlet_3_daily_energy
@@ -91,9 +91,9 @@ switch:
     name: outlet_3_relay
     pin: GPIO15
     on_turn_on:
-    - switch.turn_on: blue_led
+      - switch.turn_on: blue_led
     on_turn_off:
-    - switch.turn_off: blue_led
+      - switch.turn_off: blue_led
 
   - platform: gpio
     id: blue_led

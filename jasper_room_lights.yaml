@@ -32,10 +32,10 @@ uart:
 
 sensor:
   - platform: uptime
-    name: 'jasper_room_lights_uptime'
+    name: jasper_room_lights_uptime
 
   - platform: wifi_signal
-    name: 'jasper_room_lights_wifi_signal'
+    name: jasper_room_lights_wifi_signal
 
 switch:
   - platform: uart

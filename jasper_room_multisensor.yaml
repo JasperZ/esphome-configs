@@ -26,7 +26,7 @@ ota:
 binary_sensor:
   - platform: gpio
     pin: D5
-    name: 'jasper_room_multisensor_pir'
+    name: jasper_room_multisensor_pir
 
 sensor:
   - platform: dht
@@ -35,14 +35,14 @@ sensor:
     temperature:
       filters:
         offset: -5.0
-      name: 'jasper_room_multisensor_temperature'
+      name: jasper_room_multisensor_temperature
     humidity:
       filters:
-      name: 'jasper_room_multisensor_humidity'
+      name: jasper_room_multisensor_humidity
     update_interval: 10s
 
   - platform: uptime
-    name: 'jasper_room_multisensor_uptime'
+    name: jasper_room_multisensor_uptime
 
   - platform: wifi_signal
-    name: 'jasper_room_multisensor_wifi_signal'
+    name: jasper_room_multisensor_wifi_signal
