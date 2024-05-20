@@ -1,8 +1,10 @@
 esphome:
   name: outlet-4
-  platform: ESP8266
+
+esp8266:
   board: esp01_1m
   board_flash_mode: dout
+  restore_from_flash: true
 
 wifi:
   ssid: !secret wlan_ssid
@@ -105,12 +107,14 @@ switch:
       - switch.turn_on: blue_led
     on_turn_off:
       - switch.turn_off: blue_led
+    restore_mode: RESTORE_DEFAULT_ON
 
   - platform: gpio
     id: blue_led
     pin:
       number: GPIO02
       inverted: True
+    restore_mode: RESTORE_DEFAULT_ON
 
 status_led:
   pin:
